@@ -54,23 +54,23 @@ function App() {
       <div className='container data-box' >
         <div className='row'>
           {
-            getdata.map((item) =>
-              <div className='col-xl-2 col-lg-4 col-md-6 col-sm-12 main-data-box'>
-                <img className='image' src={item.image} alt="movieImage" />
+            getdata.map((item,index) =>
+              <div className='col-xl-2 col-lg-4 col-md-6 col-sm-12 main-data-box' key={index}>
+                <img className='image' src={item.image} alt="movieImage"/>
                 <div>{item.titleOriginal
                 }</div>
                 <div>{item.rating} IMDb</div>
                 <div>
-                  {item.countries.map((val) =>
-                    <span>{val.name}</span>
+                  {item.countries.map((val,index) =>
+                    <span key={index}>{val.name}</span>
                   )}
                 </div>
                 <div>
                   {item.release}
                 </div>
                 <div className='stream-link'>
-                  {item.embedUrls.map((downlink) =>
-                    <a href={downlink.url} className="links" target={'_blank'}>{downlink.server}</a>
+                  {item.embedUrls.map((downlink, index) =>
+                    <a href={downlink.url} className="links" target={'_blank'} key={index}>{downlink.server}</a>
                   )}
                 </div>
               </div>
