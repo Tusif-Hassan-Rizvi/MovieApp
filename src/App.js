@@ -30,13 +30,13 @@ function App() {
       }
     };
 
-    fetch(`https://movies-app1.p.rapidapi.com/api/movies?query=${inputdata}`, options)
+    fetch(`https://movies-app1.p.rapidapi.com/api/movies?query=${data}`, options)
       .then(response => response.json())
       .then(response => {
         setGetdata(response.results)
       })
       .catch(err => console.error(err));
-  }, [inputdata])
+  }, [data])
 
   return (
     <>
