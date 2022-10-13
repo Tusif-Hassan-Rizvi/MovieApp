@@ -1,5 +1,4 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
 import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
@@ -38,7 +37,7 @@ function App() {
       })
       .catch(err => console.error(err));
   }, [inputdata])
- 
+
   return (
     <>
       {/* header */}
@@ -52,32 +51,32 @@ function App() {
 
 
       {/* moviedatabox */}
-      <div>
-        {
-          getdata.map((item) =>
-            <>
-            <div className='container my-5'  >
-              <img src={item.image}/>
-              <div>{item.titleOriginal
-              }</div>
-              <div>{item.rating} IMDb</div>
-              <div>
-                {item.countries.map((val)=>
-                <span>{val.name}</span>
-                )}
-              </div>
-              <div>
-                {item.release}
-              </div>
-              <div>
-                {item.embedUrls.map((downlink)=>
-                <a href={downlink.url} className="links" target={'_blank'}>{downlink.server}</a>
-                )}
+      <div className='container data-box' >
+        <div className='row'>
+          {
+            getdata.map((item) =>
+              <div className='col-xl-2 col-lg-4 col-md-6 col-sm-12 main-data-box'>
+                <img className='image' src={item.image} alt="movieImage" />
+                <div>{item.titleOriginal
+                }</div>
+                <div>{item.rating} IMDb</div>
+                <div>
+                  {item.countries.map((val) =>
+                    <span>{val.name}</span>
+                  )}
+                </div>
+                <div>
+                  {item.release}
+                </div>
+                <div className='stream-link'>
+                  {item.embedUrls.map((downlink) =>
+                    <a href={downlink.url} className="links" target={'_blank'}>{downlink.server}</a>
+                  )}
                 </div>
               </div>
-            </>
-          )
-        }
+            )
+          }
+        </div>
       </div>
     </>
   );

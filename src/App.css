@@ -22,7 +22,6 @@ body{
 
 
 .inputbox {
-  width: 100vw;
   height: 20vh;
   display: flex;
   justify-content: center;
@@ -52,24 +51,53 @@ body{
   color: black;
 }
 
+.image{
+  width: 200px;
+  padding: 10px;
+}
+
+.stream-link{
+  display: flex;
+  flex-wrap: wrap;
+  }
+
 .links{
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
-  margin: 0 5px;
-  padding: 5px;
-  width: 6rem;
-  height: 2rem;
+  margin: 5px;
+  padding: 3px 6px;
   background-color: black;
   color: white;
   border-radius: 5px;
+  font-size: medium;
 }
 
 .links:hover{
   color: rgb(236, 231, 231);
 }
 
+.main-data-box{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 2rem 1rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.286);
+}
+
+.main-data-box:hover{
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.286);
+}
+
 
 @media only screen and (max-width: 500px) {
   .inputbox input {
     width: 15rem;
+  }
+
+  .main-data-box{
+    margin: 2rem 0;
   }
 }
