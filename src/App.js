@@ -12,12 +12,12 @@ function App() {
 
   const HandleChange = (event) => {
     setData(event.target.value)
-
   }
 
   const handleClick = (event) => {
     event.preventDefault();
     setInputdata(data)
+    console.log(inputdata)
   }
 
 
@@ -25,18 +25,18 @@ function App() {
     const options = {
       method: 'GET',
       headers: {
-        'X-RapidAPI-Key': 'a1ce5217f4mshf903431d8cda75ep175079jsn1efbd9f5f6f9',
+        'X-RapidAPI-Key': process.env.REACT_APP_MOVIE_API,
         'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com'
       }
     };
 
-    fetch(`https://movies-app1.p.rapidapi.com/api/movies?query=${data}`, options)
+    fetch(`https://movies-app1.p.rapidapi.com/api/movies?query=${inputdata}`, options)
       .then(response => response.json())
       .then(response => {
         setGetdata(response.results)
       })
       .catch(err => console.error(err));
-  }, [data])
+  }, [inputdata])
 
   return (
     <>
@@ -62,7 +62,7 @@ function App() {
                 <div>{item.rating} IMDb</div>
                 <div>
                   {item.countries.map((val,index) =>
-                    <span key={index}>{val.name}</span>
+                    <span key={index}>{val.name} </span>
                   )}
                 </div>
                 <div>
