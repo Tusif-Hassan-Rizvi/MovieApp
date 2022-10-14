@@ -80,7 +80,6 @@ body{
 
 .main-data-box{
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   margin: 2rem 1rem;
