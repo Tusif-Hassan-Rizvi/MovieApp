@@ -4,7 +4,7 @@ export default function Maincontainer(props) {
   return (
     <div className='container data-box' >
     <div className='row'>
-      {props.getdata.length===0?<h1 className='nodatafound'>no data found!</h1>
+      {props.getdata.length===0?<h1 className='nodatafound'>Movie not found!</h1>
         :props.getdata.map((item,index) =>
           <div className='col-xl-2 col-lg-4 col-md-6 col-sm-12 main-data-box' key={index}>
             <img className='image' src={item.image} alt="movieImage"/>
