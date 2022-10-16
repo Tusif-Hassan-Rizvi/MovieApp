@@ -2,6 +2,8 @@ import React from 'react'
 import { useState, useEffect } from 'react';
 import './App.css';
 import Header from './components/Header';
+import Inputbar from './components/Inputbar';
+import Maincontainer from './components/Maincontainer';
 
 
 
@@ -44,40 +46,10 @@ function App() {
       <Header></Header>
 
       {/* inputbox */}
-      <div className="inputbox">
-        <input type="search" placeholder="Type movie name here ex: lucy" value={data} onChange={HandleChange} />
-        <button onClick={handleClick}>Search</button>
-      </div>
-
+     <Inputbar data={data} handleClick={handleClick} HandleChange={HandleChange}></Inputbar>
 
       {/* moviedatabox */}
-      <div className='container data-box' >
-        <div className='row'>
-          {
-            getdata.map((item,index) =>
-              <div className='col-xl-2 col-lg-4 col-md-6 col-sm-12 main-data-box' key={index}>
-                <img className='image' src={item.image} alt="movieImage"/>
-                <div>{item.titleOriginal
-                }</div>
-                <div>{item.rating} IMDb</div>
-                <div>
-                  {item.countries.map((val,index) =>
-                    <span key={index}>{val.name} </span>
-                  )}
-                </div>
-                <div>
-                  {item.release}
-                </div>
-                <div className='stream-link'>
-                  {item.embedUrls.map((downlink, index) =>
-                    <a href={downlink.url} className="links" target={'_blank'} key={index}>{downlink.server}</a>
-                  )}
-                </div>
-              </div>
-            )
-          }
-        </div>
-      </div>
+      <Maincontainer getdata={getdata}></Maincontainer>
     </>
   );
 }

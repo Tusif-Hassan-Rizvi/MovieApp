@@ -87,7 +87,12 @@ body{
 }
 
 .main-data-box:hover{
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.286);
+  transition: all .5s ease;
+  transform: scale(1.05);
+}
+
+.nodatafound{
+  text-align: center;
 }
 
 
