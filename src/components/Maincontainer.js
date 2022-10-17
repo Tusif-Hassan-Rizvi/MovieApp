@@ -1,8 +1,12 @@
 import React from 'react'
+import Spinner from './Spinner'
 
 export default function Maincontainer(props) {
   return (
-    <div className='container data-box' >
+    props.loading ? (
+    <Spinner/>
+    ):(
+    <div className='container data-box'>
     <div className='row'>
       {props.getdata.length===0?<h1 className='nodatafound'>Movie not found!</h1>
         :props.getdata.map((item,index) =>
@@ -29,5 +33,6 @@ export default function Maincontainer(props) {
       }
     </div>
   </div>
+    )
   )
 }

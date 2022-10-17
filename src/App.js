@@ -11,6 +11,7 @@ function App() {
   const [data, setData] = useState('')
   const [inputdata, setInputdata] = useState('')
   const [getdata, setGetdata] = useState([])
+  const [loading, setLoading] = useState(false);
 
   const HandleChange = (event) => {
     setData(event.target.value)
@@ -18,8 +19,7 @@ function App() {
 
   const handleClick = (event) => {
     event.preventDefault();
-    setInputdata(data)
-    console.log(inputdata)
+    setInputdata(data);
   }
 
 
@@ -31,11 +31,12 @@ function App() {
         'X-RapidAPI-Host': 'movies-app1.p.rapidapi.com'
       }
     };
-
+    setLoading(true)
     fetch(`https://movies-app1.p.rapidapi.com/api/movies?query=${inputdata}`, options)
       .then(response => response.json())
       .then(response => {
         setGetdata(response.results)
+        setLoading(false)
       })
       .catch(err => console.error(err));
   }, [inputdata])
@@ -46,10 +47,10 @@ function App() {
       <Header></Header>
 
       {/* inputbox */}
-     <Inputbar data={data} handleClick={handleClick} HandleChange={HandleChange}></Inputbar>
+      <Inputbar data={data} handleClick={handleClick} HandleChange={HandleChange}></Inputbar>
 
       {/* moviedatabox */}
-      <Maincontainer getdata={getdata}></Maincontainer>
+      <Maincontainer getdata={getdata} loading={loading}></Maincontainer>
     </>
   );
 }
